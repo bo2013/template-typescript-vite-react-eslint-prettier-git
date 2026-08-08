@@ -1,0 +1,1 @@
+# template-typescript-vite-eslint-prettier-git
