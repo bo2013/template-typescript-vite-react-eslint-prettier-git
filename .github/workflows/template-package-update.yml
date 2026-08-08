@@ -12,7 +12,7 @@ jobs:
 
     permissions:
       contents: write
-      
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Update dependencies
         run: npm update
 
@@ -36,11 +36,9 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.io"
-          
+
           if [ -n "$(git status --porcelain)" ]; then
             git add package.json package-lock.json
             git commit -m "chore: auto-update dependencies [skip ci]"
             git push
           done
-              
-        
