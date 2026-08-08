@@ -1,0 +1,46 @@
+# TEMPLATE MAINTAINER ONLY
+# DELETE THIS FILE AFTER CREATING A PROJECT FROM THIS TEMPLATE.
+
+name: Template package update
+
+on:
+  - workflow_dispatch
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Update dependencies
+        run: npm update
+
+      - name: Fix vulnerabilities
+        run: npm audit fix --force
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.io"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git add package.json package-lock.json
+            git commit -m "chore: auto-update dependencies [skip ci]"
+            git push
+          done
+              
+        
