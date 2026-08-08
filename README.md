@@ -25,7 +25,7 @@ cd template-typescript-vite-react-eslint-prettier-git
 ```
 
 > [!WARNING]
-> This repository contains a workflow designed to update packages.
+> This repository contains a workflow to update packages.
 > **Remove `.github/workflows/update.yml` after creating a repository from this template.**
 
 ## Enjoy!
