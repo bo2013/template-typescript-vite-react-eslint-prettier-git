@@ -32,6 +32,9 @@ jobs:
       - name: Fix vulnerabilities
         run: npm audit fix --force
 
+      - name: Format & Lint
+        run: npm run format && npm run lint
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
@@ -41,4 +44,4 @@ jobs:
             git add package.json package-lock.json
             git commit -m "chore: auto-update dependencies [skip ci]"
             git push
-          done
+          fi
