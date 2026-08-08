@@ -4,7 +4,9 @@
 name: Template package update
 
 on:
-  - workflow_dispatch
+  workflow_dispatch:
+  schedule:
+    -  cron: "0 0 * * 0"
 
 jobs:
   update:
